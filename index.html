@@ -158,6 +158,19 @@
       canvas.style.display = "block";
     }
 
+    function removePromotionalButtons() {
+      // Look for buttons/links containing promotional text
+      var allElements = document.querySelectorAll("a, button, div");
+      allElements.forEach(function(element) {
+        var text = element.textContent || "";
+        if (text.includes("unblocked games") || 
+            text.includes("More") && text.includes("games") ||
+            element.href && element.href.includes("static")) {
+          element.style.display = "none";
+        }
+      });
+    }
+
     function watchUnityElements() {
       var container = document.getElementById("gameContainer");
       if (!container) return;
@@ -165,6 +178,7 @@
       var observer = new MutationObserver(function () {
         replaceBadProgressLogo();
         fitUnityCanvas();
+        removePromotionalButtons();
       });
 
       observer.observe(container, {
@@ -177,6 +191,7 @@
       setInterval(function () {
         replaceBadProgressLogo();
         fitUnityCanvas();
+        removePromotionalButtons();
       }, 250);
     }
 
