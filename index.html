@@ -79,93 +79,6 @@
       background-size:contain !important;
     }
 
-    #staticMenu{
-      position:fixed;
-      left:12px;
-      top:12px;
-      z-index:9999;
-      display:flex;
-      gap:10px;
-      align-items:center;
-      user-select:none;
-      padding:10px 14px;
-      border-radius:12px;
-      background:linear-gradient(135deg, rgba(20,20,28,.9), rgba(20,20,28,.6));
-      border:1px solid rgba(94,225,255,.35);
-      color:#e8f3ff;
-      box-shadow:var(--glow), var(--shadow);
-      font-size:14px;
-      animation:menuEnter .6s ease .15s both;
-    }
-
-    #staticMenu a{
-      color:#5ee1ff;
-      font-weight:800;
-      text-decoration:none;
-    }
-
-    #closeStaticMenu{
-      color:#f55;
-      cursor:pointer;
-      padding:2px 6px;
-      border-radius:6px;
-      border:1px solid rgba(255,255,255,.15);
-      background:rgba(255,255,255,.06);
-    }
-
-    @keyframes menuEnter{
-      from{opacity:0; transform:translateY(-8px)}
-      to{opacity:1; transform:translateY(0)}
-    }
-
-    #staticSlideMenu{
-      position:fixed;
-      bottom:24px;
-      right:24px;
-      z-index:9999;
-      width:100px;
-      height:100px;
-      pointer-events:none;
-      opacity:0;
-      transform:translateX(140px) scale(.96);
-      display:block;
-    }
-
-    #staticSlideMenu a{
-      display:block;
-      width:100%;
-      height:100%;
-    }
-
-    #staticSlideMenu img{
-      width:100%;
-      height:100%;
-      object-fit:contain;
-      border:0;
-      border-radius:0;
-      background:transparent;
-      box-shadow:none;
-      transition:opacity .25s ease;
-    }
-
-    .slide-in{
-      animation:slideIn 2s ease forwards;
-    }
-
-    .slide-out{
-      animation:slideOut 2s ease forwards;
-    }
-
-    @keyframes slideIn{
-      from{opacity:0; transform:translateX(140px) scale(.96)}
-      to{opacity:1; transform:translateX(0) scale(1)}
-    }
-
-    @keyframes slideOut{
-      from{opacity:1; transform:translateX(0) scale(1)}
-      to{opacity:0; transform:translateX(140px) scale(.96)}
-    }
-
     .seo-hidden{
       position:absolute;
       width:1px;
@@ -173,19 +86,6 @@
       overflow:hidden;
       clip:rect(1px,1px,1px,1px);
       white-space:nowrap;
-    }
-
-    @media (max-width:600px){
-      #staticMenu{
-        font-size:13px;
-        padding:8px 12px;
-        max-width:calc(100vw - 24px);
-      }
-
-      #staticSlideMenu{
-        width:88px;
-        height:88px;
-      }
     }
   </style>
 
@@ -200,20 +100,9 @@
     </div>
   </div>
 
-  <div id="staticMenu" role="region" aria-label="StaticQuasar931 menu">
-    <a href="https://sites.google.com/view/staticquasar931/gm3z" target="_blank" rel="noopener">More Unblocked Games by Static</a>
-    <span id="closeStaticMenu" title="Hide temporarily">✕</span>
-  </div>
-
-  <div id="staticSlideMenu" aria-live="polite">
-    <a id="staticSlideLink" href="https://sites.google.com/view/staticquasar931/google-form" target="_blank" rel="noopener" aria-label="Open Google Form">
-      <img id="staticSlideImg" src="https://cdn.jsdelivr.net/gh/StaticQuasar931/Images@main/GoogleForm.png" alt="StaticQuasar931 Google Form for feedback and requests">
-    </a>
-  </div>
-
   <div class="seo-hidden" aria-hidden="true">
-    <h1>Bad Piggies unblocked game by StaticQuasar931</h1>
-    <p>Play Bad Piggies in your browser using a local Unity WebGL build with fullscreen support and StaticQuasar931 visual SEO.</p>
+    <h1>Bad Piggies unblocked game</h1>
+    <p>Play Bad Piggies in your browser using a local Unity WebGL build with fullscreen support.</p>
   </div>
 
   <script>
@@ -297,143 +186,6 @@
     window.gameInstance = UnityLoader.instantiate("gameContainer", "Build/Bad Piggies.json", {
       onProgress: UnityProgress
     });
-
-    (function () {
-      var menu = document.getElementById("staticMenu");
-      var btn = document.getElementById("closeStaticMenu");
-      var KEY = "sq931_staticMenu_hidden_until";
-
-      function showMenu() {
-        if (menu) menu.style.display = "flex";
-      }
-
-      function hideFor3Minutes() {
-        if (!menu) return;
-        menu.style.display = "none";
-        var until = Date.now() + 180000;
-        localStorage.setItem(KEY, String(until));
-        setTimeout(showMenu, 180000);
-      }
-
-      var until = parseInt(localStorage.getItem(KEY) || "0", 10);
-      if (until && Date.now() < until) {
-        if (menu) menu.style.display = "none";
-        setTimeout(showMenu, until - Date.now());
-      } else {
-        showMenu();
-      }
-
-      if (btn) {
-        btn.onclick = hideFor3Minutes;
-      }
-    })();
-
-    (function () {
-      var wrap = document.getElementById("staticSlideMenu");
-      var link = document.getElementById("staticSlideLink");
-      var img = document.getElementById("staticSlideImg");
-
-      var FORM = {
-        src: "https://cdn.jsdelivr.net/gh/StaticQuasar931/Images@main/GoogleForm.png",
-        alt: "StaticQuasar931 Google Form for feedback and requests",
-        link: "https://sites.google.com/view/staticquasar931/google-form"
-      };
-
-      var DISCORD = {
-        src: "https://cdn.jsdelivr.net/gh/StaticQuasar931/Images@main/Join_Our_DC_StaticQuassar931_lcplrf.png",
-        alt: "Join the StaticQuasar931 Discord",
-        link: "https://discord.gg/DP2hM7RRhR"
-      };
-
-      var INSTA = {
-        src: "https://cdn.jsdelivr.net/gh/StaticQuasar931/Images@main/Follow-us--IG",
-        alt: "StaticQuasar931 Instagram",
-        link: "https://www.instagram.com/freeschoolgamepage/"
-      };
-
-      var ROTATION = [FORM, DISCORD, INSTA];
-      var idx = 0;
-      var T_IN = 2000;
-      var T_SHOW = 5000;
-      var T_OUT = 2000;
-      var T_HIDDEN = 20000;
-
-      for (var i = 0; i < ROTATION.length; i++) {
-        var preload = new Image();
-        preload.src = ROTATION[i].src;
-      }
-
-      function applyState(state) {
-        link.href = state.link;
-        link.setAttribute("aria-label", state.alt);
-        img.alt = state.alt;
-        img.style.opacity = "0";
-        setTimeout(function () {
-          img.src = state.src;
-          img.style.opacity = "1";
-        }, 80);
-      }
-
-      function delay(ms) {
-        return new Promise(function (resolve) {
-          setTimeout(resolve, ms);
-        });
-      }
-
-      async function cycle() {
-        while (true) {
-          applyState(ROTATION[idx]);
-          wrap.style.pointerEvents = "auto";
-          wrap.classList.remove("slide-out");
-          wrap.classList.add("slide-in");
-
-          await delay(T_IN + T_SHOW);
-
-          wrap.classList.remove("slide-in");
-          wrap.classList.add("slide-out");
-
-          await delay(T_OUT);
-
-          wrap.style.pointerEvents = "none";
-
-          await delay(T_HIDDEN);
-
-          idx = (idx + 1) % ROTATION.length;
-        }
-      }
-
-      cycle();
-    })();
-
-    (function () {
-      var idsToToggle = ["staticMenu", "staticSlideMenu"];
-      var seq = [];
-      var target = ["y", "u", "i"];
-
-      function toggleAllVisualSeo() {
-        for (var i = 0; i < idsToToggle.length; i++) {
-          var el = document.getElementById(idsToToggle[i]);
-          if (!el) continue;
-
-          var currentlyHidden = el.style.display === "none" || window.getComputedStyle(el).display === "none";
-
-          if (currentlyHidden) {
-            el.style.display = idsToToggle[i] === "staticMenu" ? "flex" : "block";
-          } else {
-            el.style.display = "none";
-          }
-        }
-      }
-
-      window.addEventListener("keydown", function (e) {
-        seq.push(String(e.key || "").toLowerCase());
-        if (seq.length > 3) seq.shift();
-
-        if (seq.join("") === target.join("")) {
-          toggleAllVisualSeo();
-        }
-      });
-    })();
   </script>
 </body>
 </html>
